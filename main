@@ -1,0 +1,2006 @@
+/*
+ * Author       : gowsrini2004
+ * Generated on : 18-Feb-2021 19:07:07
+ * Version      : 1.0
+ */
+ application "Voting NPS"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+	section Vote_Here
+	{
+		displayname= "Vote Here"
+		icon = "travel-white-house"
+		form Students_Voting_Form
+		{
+			displayname = "Students Voting Form"
+			success message = "You Have Voted Successfully!"
+			field alignment = left
+			Admision_Number
+			(
+				type = section
+				displayname = "Admision Number"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique Enter_Your_Admission_Number_VotingForm
+			(
+    			type = text
+				displayname = "Enter Your Admission Number"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Your Admission Number Here. \nAnd Select The Below Button"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			To_Vote
+			(
+				type = radiobuttons
+				displayname = "To Vote"
+				values = {"Click Here"}
+				initial value = "Click Here"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Your_Details
+			(
+				type = section
+				displayname = "Your Details"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			must have Your_Name
+			(
+    			type = text
+				displayname = "Your Name"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have Select_Your_Class
+			(
+				type = picklist
+				displayname = "Your Class"
+				values = {"7", "8", "9", "10", "11", "12"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Your_Sec
+			(
+    			type = text
+				displayname = "Your Section"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Roll_Number
+			(
+				type = number
+				displayname = "Your Roll Number"
+	 			row = 2
+	 			column = 2   
+				width = medium
+			)
+			Vote_Your_SPL_Here
+			(
+				type = section
+				displayname = "Vote Your SPL Here"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			must have Select_Your_SPL
+			(
+				type = picklist
+				displayname = "Select Your SPL"
+				values  = Add_SPL.ID
+    			displayformat = [SPL_Candidate_Name]
+				sortorder = ascending
+    			description
+    			[
+    				type = help_text
+    			 	message = "Select Your SPL Candidate By Clicking The Dropdown"
+    			]
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			plain_spl
+			(
+    			type = plaintext
+				value = "<div>SPL Image</div>"
+	 			row = 3
+	 			column = 2   
+				width = medium
+			)
+			Vote_Your_ASPL_Here
+			(
+				type = section
+				displayname = "Vote Your ASPL Here"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			must have Select_Your_ASPL
+			(
+				type = picklist
+				displayname = "Select Your ASPL"
+				values  = Add_ASPL.ID
+    			displayformat = [ASPL_Candidate_Name]
+				sortorder = ascending
+    			description
+    			[
+    				type = help_text
+    			 	message = "Select Your ASPL Candidate By Clicking The Dropdown"
+    			]
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			plain_aspl
+			(
+    			type = plaintext
+				value = "<div>ASPL Image</div>"
+	 			row = 4
+	 			column = 2   
+				width = medium
+			)
+	
+			customize
+			(
+				label width = 300px
+				icon = "education-hat"
+			)
+			actions
+			{
+				on add
+				{
+					Vote
+					(
+   						type = submit
+   						displayname = "Vote"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Teachers_Voting_Form
+		{
+			displayname = "Teachers Voting Form"
+			success message = "You Have Voted Successfully!"
+			field alignment = left
+			feature property = 32
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Select_Your_Department
+			(
+				type = picklist
+				displayname = "Select Your Department"
+				values = {"Management", "Mathematics", "Science", "English", "Computer Science", "Language", "Social Science", "Accounts", "Arts"}
+    			description
+    			[
+    				type = help_text
+    			 	message = "Click The Dropdown and Select Your Department"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Select_Your_Name_Teacher
+			(
+				type = picklist
+				displayname = "Select Your Name"
+				values = {"Choice 1"}
+    			description
+    			[
+    				type = help_text
+    			 	message = "Click The Dropdown and Select Your Name"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Select_Your_SPL_Teacher_Section
+			(
+				type = section
+				displayname = "Select Your SPL"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			must have Select_Your_SPL_Teachers
+			(
+				type = picklist
+				displayname = "Select Your SPL"
+				values  = Add_SPL.ID
+    			displayformat = [SPL_Candidate_Name]
+				sortorder = ascending
+    			description
+    			[
+    				type = help_text
+    			 	message = "Select Your SPL Candidate By Clicking The Dropdown"
+    			]
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			plain_spl_teacher
+			(
+    			type = plaintext
+				value = "<div>SPL Image</div>"
+	 			row = 2
+	 			column = 2   
+				width = medium
+			)
+			Select_Your_ASPL_Teacher_Section
+			(
+				type = section
+				displayname = "Select Your ASPL"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			must have Select_Your_ASPL_Teachers
+			(
+				type = picklist
+				displayname = "Select Your ASPL"
+				values  = Add_ASPL.ID
+    			displayformat = [ASPL_Candidate_Name]
+				sortorder = ascending
+    			description
+    			[
+    				type = help_text
+    			 	message = "Select Your ASPL Candidate By Clicking The Dropdown"
+    			]
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			plain_aspl_teacher
+			(
+    			type = plaintext
+				value = "<div>ASPL Image</div>"
+	 			row = 3
+	 			column = 2   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "users-2-wc"
+			)
+			actions
+			{
+				on add
+				{
+					Vote
+					(
+   						type = submit
+   						displayname = "Vote"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	section Add_Details
+	{
+		displayname= "Add Details"
+		icon = "ui-1-bold-add"
+		form Student_Details_Form
+		{
+			displayname = "Student Details Form"
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Section
+			(
+				type = picklist
+				values = {"A", "B", "C", "D"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Role_no
+			(
+				type = number
+				displayname = "Role no"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Class
+			(
+				type = picklist
+				values = {"7", "8", "9", "10", "11", "12"}
+	 			row = 1
+	 			column = 1   
+				width = 200px
+			)
+			Voting_Status
+			(
+				type = picklist
+				displayname = "Voting Status"
+				values = {"Pending", "Voted"}
+				initial value = "Pending"
+	 			row = 1
+	 			column = 1   
+				width = 200px
+			)
+			must have unique Enter_Your_Admission_Number_New
+			(
+    			type = text
+				displayname = "Admission Number"
+	 			row = 1
+	 			column = 1   
+				width = 200px
+			)
+	
+			customize
+			(
+				icon = "ui-1-bold-add"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Teachers_Details_Form
+		{
+			displayname = "Teachers Details Form"
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Teacher_Name
+			(
+    			type = text
+				displayname = "Teacher Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Department
+			(
+				type = picklist
+				values = {"Mathematics", "Science", "Social Science", "Accounts", "English", "Arts", "Management", "Language", "Computer Science"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Status
+			(
+				type = picklist
+				values = {"Pending", "Voted"}
+				initial value = "Pending"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "ui-1-bold-add"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Add_SPL
+		{
+			displayname = "Add SPL"
+			success message = "SPL Data Added Successfully!"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique SPL_Candidate_Name
+			(
+    			type = text
+				displayname = "SPL Candidate Name"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter SPL Candidate Name"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Logo_SPL
+			(
+    			type = image
+				displayname = "Logo"
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+    			description
+    			[
+    				type = help_text
+    			 	message = "Upload SPL Candidate Logo"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Vote_Count_spl
+			(
+				type = number
+				displayname = "Vote Count"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "users-2-contacts-45"
+			)
+			actions
+			{
+				on add
+				{
+					Add_SPL
+					(
+   						type = submit
+   						displayname = "Add SPL"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Add_ASPL
+		{
+			displayname = "Add ASPL"
+			success message = "Aspl Detail Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique ASPL_Candidate_Name
+			(
+    			type = text
+				displayname = "ASPL Candidate Name "
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter ASPL Candidate Image"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Logo_ASPL
+			(
+    			type = image
+				displayname = "Logo"
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+    			description
+    			[
+    				type = help_text
+    			 	message = "Upload ASPL Candidate Logo"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Vote_Count_aspl
+			(
+				type = number
+				displayname = "Vote Count"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "users-2-contacts-44"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	section Master
+	{
+		list Students_List
+		{
+			displayName = "Students List"
+			show all rows from Student_Details_Form    
+			(
+				Name
+				Section
+				Role_no as "Role no"
+				Voting_Status as "Voting Status"
+				Enter_Your_Admission_Number_New as "Admission Number"
+				Class
+			)
+			options
+			(
+				icon = "shopping-receipt-list-43"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Name
+							Class
+							Section
+							Role_no as "Role no"
+							Voting_Status as "Voting Status"
+							Enter_Your_Admission_Number_New as "Admission Number"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Delete 
+    		 			Add 
+    		 			Print 
+    		 			Import 
+    		 			Export 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Print   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								Print   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Name
+							Section
+							Role_no as "Role no"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Print 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+		list Teachers_List
+		{
+			displayName = "Teachers List"
+			show all rows from Teachers_Details_Form    
+			(
+				Teacher_Name as "Teacher Name"
+				Department
+				Status
+			)
+			options
+			(
+				icon = "shopping-receipt-list-43"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Teacher_Name as "Teacher Name"
+							Department
+							Status
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    		 			Add 
+    		 			Print 
+    		 			Import 
+    		 			Export 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Print   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								Print   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Teacher_Name as "Teacher Name"
+							Department
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Print 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+		default list Students_Vote_Report
+		{
+			displayName = "Students Vote Report"
+			show all rows from Students_Voting_Form    
+			(
+				Roll_Number as "Your Roll Number"
+				Select_Your_SPL as "Select Your SPL"
+				Select_Your_ASPL as "Select Your ASPL"
+				Select_Your_Class as "Your Class"
+				Enter_Your_Admission_Number_VotingForm as "Enter Your Admission Number"
+				Your_Name as "Your Name"
+				Your_Sec as "Your Section"
+				To_Vote as "To Vote"
+				Added_Time as "Added Time"
+			)
+			options
+			(
+				icon = "shopping-box"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Your_Name as "Your Name"
+							Roll_Number as "Your Roll Number"
+							Select_Your_Class as "Your Class"
+							Your_Sec as "Your Section"
+							Select_Your_SPL as "Select Your SPL"
+							Select_Your_ASPL as "Select Your ASPL"
+							Enter_Your_Admission_Number_VotingForm as "Enter Your Admission Number"
+							Added_Time as "Added Time"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Roll_Number as "Your Roll Number"
+							Select_Your_SPL as "Select Your SPL"
+							Select_Your_ASPL as "Select Your ASPL"
+							Select_Your_Class as "Your Class"
+							Enter_Your_Admission_Number_VotingForm as "Enter Your Admission Number"
+							Your_Name as "Your Name"
+							Your_Sec as "Your Section"
+							To_Vote as "To Vote"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+		default list Teachers_Vote_Report
+		{
+			displayName = "Teachers Vote Report"
+			show all rows from Teachers_Voting_Form    
+			(
+				Select_Your_Department as "Select Your Department"
+				Select_Your_Name_Teacher as "Select Your Name"
+				Select_Your_SPL_Teachers as "Select Your SPL"
+				Select_Your_ASPL_Teachers as "Select Your ASPL"
+				Select_Your_SPL_Teachers.SPL_Candidate_Name as "SPL Candidate Name"
+				Added_Time as "Added Time"
+			)
+			options
+			(
+				icon = "shopping-box"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Select_Your_Name_Teacher as "Select Your Name"
+							Select_Your_Department as "Select Your Department"
+							Select_Your_SPL_Teachers as "Select Your SPL"
+							Select_Your_ASPL_Teachers as "Select Your ASPL"
+							Select_Your_SPL_Teachers.SPL_Candidate_Name as "SPL Candidate Name"
+							Added_Time as "Added Time"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Select_Your_Department as "Select Your Department"
+							Select_Your_Name_Teacher as "Select Your Name"
+							Select_Your_SPL_Teachers as "Select Your SPL"
+							Select_Your_ASPL_Teachers as "Select Your ASPL"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Results
+	{
+		icon = "sport-crown"
+		default list SPL_List
+		{
+			displayName = "SPL List"
+			show all rows from Add_SPL    
+			(
+				Logo_SPL as "Logo"
+				SPL_Candidate_Name as "SPL Candidate Name"
+				Vote_Count_spl as "Vote Count"
+			)
+			options
+			(
+				icon = "sport-trophy"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							SPL_Candidate_Name as "SPL Candidate Name"
+							Vote_Count_spl as "Vote Count"
+							Logo_SPL as "Logo"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Logo_SPL as "Logo"
+							SPL_Candidate_Name as "SPL Candidate Name"
+							Vote_Count_spl as "Vote Count"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+		default list ASPL_List
+		{
+			displayName = "ASPL List"
+			show all rows from Add_ASPL    
+			(
+				ASPL_Candidate_Name as "ASPL Candidate Name "
+				(
+					width = 359px
+				)
+				Logo_ASPL as "Logo"
+				(
+					width = 275px
+				)
+				Vote_Count_aspl as "Vote Count"
+				(
+					width = 201px
+				)
+			)
+			options
+			(
+				icon = "sport-trophy"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							ASPL_Candidate_Name as "ASPL Candidate Name "
+							Vote_Count_aspl as "Vote Count"
+							Logo_ASPL as "Logo"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							ASPL_Candidate_Name as "ASPL Candidate Name "
+							Logo_ASPL as "Logo"
+							Vote_Count_aspl as "Vote Count"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Voting_Report
+	{
+		displayname= "Voting Report"
+		icon = "business-laptop-71"
+				 page Voting_Report 
+	 	 { 
+ 	 	 displayname = "Voting Report" 
+
+ 	 	 icon = "business-goal-64" 
+	 	 Content="<zml \n\t\t\tisPdfEnabled='false'\n\t\t\n\t\t\tisPrintEnabled='false'\n\t\t\n\t\t\n\t\t\twebDeviceConfig='{\"layout\":{\"displayType\":\"card\",\"design\":\"fluid\",\"style\":\"padding-right:0px;padding-top:1px;padding-bottom:0px;padding-left:0px;\"}}'\n\t\t\n\t\t\n\t\t>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<panel    \t\t titleSize = '20px'\n   \t\t title = 'Total Students'\n\n>\n\t<pr    \t\t height = 'fill'\n   \t\t width = 'fill'\n\n>\n\t<pc    \t\t width = '100%'\n   \t\t bgColor = '#FFFFFF'\n   \t\t padding = '20px'\n   \t\t hAlign = 'center'\n   \t\t vAlign = 'middle'\n\n>\n\t<pr    \t\t height = 'auto'\n   \t\t width = 'auto'\n\n>\n\t<pc    \t\t padding = '5px'\n\n>\n\t<pr \n>\n\t<pc \n>\n\t<text    \t\t type = 'Form Data'\n   \t\t value = 'thisapp.Student_Details_Form.ID.count'\n   \t\t size = '36px'\n   \t\t color = '#FF4C2F'\n   \t\t bold = 'true'\n   \t\t displayType = 'actual'\n   \t\t decimalSeperator = '.'\n   \t\t numberScale = 'none'\n\n>\n<\/text>\n\n\n<\/pc>\n<\/pr><pr \n>\n\t<pc \n>\n\t<text    \t\t type = 'Text'\n   \t\t value = 'Total Students'\n   \t\t size = '16px'\n   \t\t color = '#333333'\n\n>\n<\/text>\n\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"50%\"\n   \t>\n\t<gauge    \t\t bgColor = '#ffffff'\n   \t\t color = '#000000'\n   \t\t bold = 'false'\n   \t\t italic = 'false'\n   \t\t criteria = '(((Voting_Status == &quot;Voted&quot;)))'\n   \t\t fontFamily = 'default'\n   \t\t theme = '#38D66D'\n   \t\t displayType = 'actual'\n   \t\t type = '4'\n   \t\t size = '33px'\n   \t\t filledColor = 'rgba(56, 214, 109, 1)'\n   \t\t nonFilledColor = '#F5F5F5'\n   \t\t titleSize = '20px'\n   \t\t title = 'Total Students Voted'\n   \t\t value = 'thisapp.Student_Details_Form.ID.count'\n\n>\n\t\t<maximumvalue size=\"15px\" \n\t\tcolor=\"#7F7F7F\"\n        fontFamily=\"default\"\n\t\tbold=\"false\"\n\t\titalic=\"false\"\t\t\n\t\tvalue=\"600\" \/>\n<\/gauge>\n<\/column><column\n   \t\t width=\"50%\"\n   \t>\n\t<gauge    \t\t bgColor = '#ffffff'\n   \t\t color = '#000000'\n   \t\t bold = 'false'\n   \t\t italic = 'false'\n   \t\t criteria = '(((Voting_Status == &quot;Pending&quot;)))'\n   \t\t fontFamily = 'default'\n   \t\t theme = '#FF3B2C'\n   \t\t displayType = 'actual'\n   \t\t type = '4'\n   \t\t size = '20px'\n   \t\t filledColor = 'rgba(255, 59, 44, 1)'\n   \t\t nonFilledColor = '#F5F5F5'\n   \t\t titleSize = '20px'\n   \t\t title = 'Students Yet To Vote'\n   \t\t value = 'thisapp.Student_Details_Form.ID.count'\n\n>\n\t\t<maximumvalue size=\"15px\" \n\t\tcolor=\"#7F7F7F\"\n        fontFamily=\"default\"\n\t\tbold=\"false\"\n\t\titalic=\"false\"\t\t\n\t\tvalue=\"600\" \/>\n<\/gauge>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<panel    \t\t titleSize = '20px'\n   \t\t title = 'Total Teachers'\n\n>\n\t<pr    \t\t height = 'fill'\n   \t\t width = 'fill'\n\n>\n\t<pc    \t\t width = '100%'\n   \t\t bgColor = '#FFFFFF'\n   \t\t padding = '20px'\n   \t\t hAlign = 'center'\n   \t\t vAlign = 'middle'\n\n>\n\t<pr    \t\t height = 'auto'\n   \t\t width = 'auto'\n\n>\n\t<pc    \t\t padding = '5px'\n\n>\n\t<pr \n>\n\t<pc \n>\n\t<text    \t\t type = 'Form Data'\n   \t\t value = 'thisapp.Teachers_Details_Form.ID.count'\n   \t\t size = '36px'\n   \t\t color = '#FF4C2F'\n   \t\t bold = 'true'\n   \t\t displayType = 'actual'\n   \t\t decimalSeperator = '.'\n   \t\t numberScale = 'none'\n\n>\n<\/text>\n\n\n<\/pc>\n<\/pr><pr \n>\n\t<pc \n>\n\t<text    \t\t type = 'Text'\n   \t\t value = 'Total Teachers'\n   \t\t size = '16px'\n   \t\t color = '#333333'\n\n>\n<\/text>\n\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"50%\"\n   \t>\n\t<gauge    \t\t bgColor = '#ffffff'\n   \t\t color = '#000000'\n   \t\t bold = 'false'\n   \t\t italic = 'false'\n   \t\t criteria = '(((Status == &quot;Voted&quot;)))'\n   \t\t fontFamily = 'default'\n   \t\t theme = '#38D66D'\n   \t\t displayType = 'actual'\n   \t\t type = '4'\n   \t\t size = '20px'\n   \t\t filledColor = 'rgba(56, 214, 109, 1)'\n   \t\t nonFilledColor = '#F5F5F5'\n   \t\t titleSize = '20px'\n   \t\t title = 'Total Teachers Voted'\n   \t\t value = 'thisapp.Teachers_Details_Form.ID.count'\n\n>\n\t\t<maximumvalue size=\"15px\" \n\t\tcolor=\"#7F7F7F\"\n        fontFamily=\"default\"\n\t\tbold=\"false\"\n\t\titalic=\"false\"\t\t\n\t\tvalue=\"100\" \/>\n<\/gauge>\n<\/column><column\n   \t\t width=\"50%\"\n   \t>\n\t<gauge    \t\t bgColor = '#ffffff'\n   \t\t color = '#000000'\n   \t\t bold = 'false'\n   \t\t italic = 'false'\n   \t\t criteria = '(((Status == &quot;Pending&quot;)))'\n   \t\t fontFamily = 'default'\n   \t\t theme = '#FF3B2C'\n   \t\t displayType = 'actual'\n   \t\t type = '4'\n   \t\t size = '20px'\n   \t\t filledColor = 'rgba(255, 59, 44, 1)'\n   \t\t nonFilledColor = '#F5F5F5'\n   \t\t titleSize = '20px'\n   \t\t title = 'Teachers Yet To Vote'\n   \t\t value = 'thisapp.Teachers_Details_Form.ID.count'\n\n>\n\t\t<maximumvalue size=\"15px\" \n\t\tcolor=\"#7F7F7F\"\n        fontFamily=\"default\"\n\t\tbold=\"false\"\n\t\titalic=\"false\"\t\t\n\t\tvalue=\"100\" \/>\n<\/gauge>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<chart    \t\t type = 'Column'\n   \t\t xtitle = 'Candidate Name'\n   \t\t ytitle = 'Vote Count'\n   \t\t bgColor = 'rgb(255, 255, 255)'\n   \t\t theme = 'theme1'\n   \t\t legendPos = 'none'\n   \t\t titleSize = '28px'\n   \t\t title = 'SPL Vote Report'\n   \t\t titleColor = '#444444'\n   \t\t appLinkName = 'thisapp'\n   \t\t formLinkName = 'Add_SPL'\n   \t\t xfield = 'SPL_Candidate_Name'\n   \t\t yfields = 'value:Vote_Count_spl'\n\n\/>\n\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<chart    \t\t type = 'Column'\n   \t\t xtitle = 'Candidate Name'\n   \t\t ytitle = 'Vote Count'\n   \t\t bgColor = 'rgb(255, 255, 255)'\n   \t\t theme = '#ff4c2f'\n   \t\t legendPos = 'center.top'\n   \t\t titleSize = '28px'\n   \t\t title = 'ASPL Vote Report'\n   \t\t appLinkName = 'thisapp'\n   \t\t formLinkName = 'Add_ASPL'\n   \t\t xfield = 'ASPL_Candidate_Name'\n   \t\t yfields = 'value:Vote_Count_aspl'\n\n\/>\n\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<report    \t\t appLinkName = 'thisapp'\n   \t\t linkName = 'Students_List'\n   \t\t criteriaString = '(((Voting_Status == &quot;Pending&quot;)))'\n   \t\t heightType = 'auto'\n   \t\t heightValue = '700'\n   \t\t iszreport = 'false'\n   \t\t zc_Header = 'true'\n   \t\t zc_Footer = 'true'\n   \t\t zc_SecHeader = 'true'\n   \t\t zc_AddRec = 'false'\n   \t\t zc_EditRec = 'false'\n   \t\t zc_Print = 'true'\n   \t\t zc_Export = 'true'\n   \t\t zc_DelRec = 'false'\n   \t\t zc_DuplRec = 'false'\n   \t\t zc_EditBulkRec = 'true'\n   \t\t zc_SaveRec = 'true'\n   \t\t zc_Filter = 'true'\n   \t\t zc_Search = 'false'\n   \t\t zc_SumRow = 'true'\n   \t\t zc_ColMenu = 'true'\n   \t\t zc_RecSelect = 'true'\n   \t\t allowPublicAccess = 'false'\n   \t\t titleSize = '20px'\n   \t\t title = 'Total Students Pending To Vote'\n\n\/>\n\n<\/column>\n<\/row>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<report    \t\t appLinkName = 'thisapp'\n   \t\t linkName = 'Teachers_List'\n   \t\t criteriaString = '(((Status == &quot;Pending&quot;)))'\n   \t\t heightType = 'auto'\n   \t\t heightValue = '700'\n   \t\t iszreport = 'false'\n   \t\t zc_Header = 'true'\n   \t\t zc_Footer = 'true'\n   \t\t zc_SecHeader = 'true'\n   \t\t zc_AddRec = 'false'\n   \t\t zc_EditRec = 'false'\n   \t\t zc_Print = 'true'\n   \t\t zc_Export = 'true'\n   \t\t zc_DelRec = 'false'\n   \t\t zc_DuplRec = 'false'\n   \t\t zc_EditBulkRec = 'true'\n   \t\t zc_SaveRec = 'true'\n   \t\t zc_Filter = 'true'\n   \t\t zc_Search = 'false'\n   \t\t zc_SumRow = 'true'\n   \t\t zc_ColMenu = 'true'\n   \t\t zc_RecSelect = 'true'\n   \t\t allowPublicAccess = 'false'\n   \t\t titleSize = '20px'\n   \t\t title = 'Total Teachers Pending To Vote'\n\n\/>\n\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>" 
+ 	 	}
+	}
+
+
+
+		workflow
+		{
+		form
+		{
+			candidate_Image_teachers1 as "candidate Image teachers"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add
+
+				on user input of Select_Your_ASPL_Teachers
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// img = Add_ASPL[ID == input.Select_Your_ASPL_Teachers].ASPL_Image;
+										// imgID = Add_ASPL[ID == input.Select_Your_ASPL_Teachers].ID;
+										// if(img != null)
+										// {
+										// 	file_path = img.getSuffix("downqual = \"").getSuffix("image/").getPrefix("\"");
+										// 	tmp_img = "https://creatorexport.zoho.com/file/ramakrishnamath/demo1/ASPL_List/" + imgID + "/ASPL_Image/image-download/gXajaNGakJ04Uk0TvhYGFFs7u4MxWK6KMhg7ugtAWd7nOwO1RQbZK0GxAQ4PfFksfK5yCj1uFHmhxyjN698nSCgPkNxxkxWpw7Zp?filepath=/" + file_path;
+										// 	Image = "<img height=200px width=200px src='" + tmp_img + "'></img>";
+										// 	input.plain_aspl_teacher = Image;
+										// }
+										img = Add_ASPL[ID == input.Select_Your_ASPL_Teachers].Logo_ASPL;
+										if(img != null)
+										{
+											//Replacing the masked parameters with valid application specific parameters
+											img = img.replaceAll("/sharedBy/appLinkName/",zoho.appuri);
+											img = img.replaceAll("viewLinkName","ASPL_List");
+											img = img.replaceAll("fieldName","ASPL_Image");
+											img = img.replaceAll("<img ","<img height=100px width=100px ");
+											input.plain_aspl_teacher = img;
+										}
+						)
+					}
+				}
+
+			}
+			candidate_Image_teachers2 as "candidate Image teachers"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add
+
+				on user input of Select_Your_SPL_Teachers
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// img = Add_SPL[ID == input.Select_Your_SPL_Teachers].SPL_Image;
+										// imgID = Add_SPL[ID == input.Select_Your_SPL_Teachers].ID;
+										// if(img != null)
+										// {
+										// 	file_path = img.getSuffix("downqual = \"").getSuffix("image/").getPrefix("\"");
+										// 	tmp_img = "https://creatorexport.zoho.com/file/ramakrishnamath/demo1/SPL_List/" + imgID + "/SPL_Image/image-download/Hd52DJSx64tFbkhQ1Bsrp5r6MU6Marp0CNmqtfWYxJDJM2DfeEr1tskuqUzDhHgRz5mVZx9OJQuU6MMr4vQbC8MQYVuJkWU5TYBx?filepath=/" + file_path;
+										// 	Image = "<img height=200px width=200px src='" + tmp_img + "'></img>";
+										// 	input.plain_spl_teacher = Image;
+										// }
+										img = Add_SPL[ID == input.Select_Your_SPL_Teachers].Logo_SPL;
+										if(img != null)
+										{
+											//Replacing the masked parameters with valid application specific parameters
+											img = img.replaceAll("/sharedBy/appLinkName/",zoho.appuri);
+											img = img.replaceAll("viewLinkName","SPL_List");
+											img = img.replaceAll("fieldName","SPL_Image");
+											img = img.replaceAll("<img ","<img height=100px width=100px ");
+											input.plain_spl_teacher = img;
+										}
+						)
+					}
+				}
+
+			}
+			Name_filtering1 as "Name filtering"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add
+
+				on user input of Select_Your_Department
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Select_Your_Department != null)
+										{
+											clear Select_Your_Name_Teacher;
+											for each  record in Teachers_Details_Form[Department == input.Select_Your_Department]
+											{
+												if(record.Status == "Pending")
+												{
+													input.Select_Your_Name_Teacher:ui.add(record.Teacher_Name);
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Hide_Field1 as "Hide Field"
+			{
+				type =  form
+				form = Student_Details_Form
+				record event = on add
+
+				field rules
+				{
+					actions 
+					{
+						hide Voting_Status;
+					}
+				}
+
+			}
+			Update_Pending_Status_To_1 as "Update Pending Status To Voted"
+			{
+				type =  form
+				form = Students_Voting_Form
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// recorstudent_record = Student_Details_Form[Name == input.Your_Name && Class == input.Select_Your_Class && Section == input.Your_Sec && Role_no == input.Roll_Number];
+										// recorstudent_record.Voting_Status="Voted";
+										recorstudent_record = Student_Details_Form[Enter_Your_Admission_Number_New == input.Enter_Your_Admission_Number_VotingForm];
+										recorstudent_record.Voting_Status="Voted";
+						)
+					}
+				}
+
+			}
+			Update_pending_to_voted1 as "Update pending to voted"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											teacher_record = Teachers_Details_Form[Teacher_Name == input.Select_Your_Name_Teacher && Department == input.Select_Your_Department];
+										teacher_record.Status="Voted";
+						)
+					}
+				}
+
+			}
+			Voting_Status_Hide1 as "Voting Status Hide"
+			{
+				type =  form
+				form = Teachers_Details_Form
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Status;
+						)
+					}
+				}
+
+			}
+			Disabling_Fields as "Disabling Fields"
+			{
+				type =  form
+				form = Students_Voting_Form
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable Your_Name;
+										disable Your_Sec;
+										disable Roll_Number;
+										disable Select_Your_Class;
+										hide Vote_Your_SPL_Here;
+										hide Vote_Your_ASPL_Here;
+										hide Your_Details;
+						)
+					}
+				}
+
+			}
+			Check_and_Load_The_Studen as "Check and Load The Student Details"
+			{
+				type =  form
+				form = Students_Voting_Form
+				record event = on add or edit
+
+				on user input of Enter_Your_Admission_Number_VotingForm
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable Your_Name;
+										disable Your_Sec;
+										disable Roll_Number;
+										disable Select_Your_Class;
+										hide Vote_Your_SPL_Here;
+										hide Vote_Your_ASPL_Here;
+										rec = Student_Details_Form[Enter_Your_Admission_Number_New == input.Enter_Your_Admission_Number_VotingForm];
+										if(rec != null)
+										{
+											if(rec.Voting_Status == "Pending")
+											{
+												input.Your_Name = rec.Name;
+												input.Your_Sec = rec.Section;
+												input.Select_Your_Class = rec.Class;
+												input.Roll_Number = rec.Role_no;
+												show Vote_Your_SPL_Here;
+												show Vote_Your_ASPL_Here;
+												show Your_Details;
+												hide To_Vote;
+											}
+											else if(rec.Voting_Status == "Voted")
+											{
+												alert "You Have Already Voted";
+												hide Your_Details;
+												show To_Vote;
+											}
+											else
+											{
+												alert "Invalid Token Entry";
+												hide Your_Details;
+												show To_Vote;
+											}
+										}
+										// else
+										// {
+										// 	alert "Error";
+										// 	input.Your_Name = "";
+										// 	input.Your_Sec = "";
+										// 	input.Select_Your_Class = "";
+										// 	input.Roll_Number = 0;
+										// }
+						)
+					}
+				}
+
+			}
+			Hide_Field as "Hide Field"
+			{
+				type =  form
+				form = Add_SPL
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Vote_Count_spl;
+						)
+					}
+				}
+
+			}
+			Vote_Counter_For_Student as "Vote Counter For Student"
+			{
+				type =  form
+				form = Students_Voting_Form
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											spl_rec = Add_SPL[ID == input.Select_Your_SPL];
+										aspl_rec = Add_ASPL[ID == input.Select_Your_ASPL];
+										if(spl_rec != null && aspl_rec != null)
+										{
+											aspl_rec.Vote_Count_aspl=aspl_rec.Vote_Count_aspl + 1;
+											spl_rec.Vote_Count_spl=spl_rec.Vote_Count_spl + 1;
+										}
+						)
+					}
+				}
+
+			}
+			Vote_Count_For_Teacher as "Vote Count For Teacher"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											spl_rec = Add_SPL[ID == input.Select_Your_SPL_Teachers];
+										aspl_rec = Add_ASPL[ID == input.Select_Your_ASPL_Teachers];
+										if(spl_rec != null && aspl_rec != null)
+										{
+											aspl_rec.Vote_Count_aspl=aspl_rec.Vote_Count_aspl + 1;
+											spl_rec.Vote_Count_spl=spl_rec.Vote_Count_spl + 1;
+										}
+						)
+					}
+				}
+
+			}
+			Hide_Field2 as "Hide Field"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Select_Your_Name_Teacher;
+										hide Select_Your_SPL_Teacher_Section;
+										hide Select_Your_ASPL_Teacher_Section;
+						)
+					}
+				}
+
+			}
+			Enable_Field as "Enable Field"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add or edit
+
+				on user input of Select_Your_Department
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											show Select_Your_Name_Teacher;
+						)
+					}
+				}
+
+			}
+			Enable_Field1 as "Enable Field"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add or edit
+
+				on user input of Select_Your_Name_Teacher
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											show Select_Your_SPL_Teacher_Section;
+										show Select_Your_ASPL_Teacher_Section;
+						)
+					}
+				}
+
+			}
+			Hide_Field3 as "Hide Field"
+			{
+				type =  form
+				form = Add_ASPL
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Vote_Count_aspl;
+						)
+					}
+				}
+
+			}
+			Send_Email_Form_Propertie as "Send Email - Form Properties"
+			{
+				type =  presuccess
+				form = Students_Voting_Form
+					status = inactive
+				on start
+				{
+					actions 
+					{
+						sendmail
+						(
+							from : "zoho.adminuserid"
+							to : "zoho.adminuserid"
+							subject : "Voting : New entry added"
+							message : "Hello,<br/><br/>A new entry added in 'Students Voting Form' form of 'Voting' application.<br/><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>"
+							attachments : template : _default as inline
+						)
+					}
+				}
+			}
+			Load_SPL_Image_Student as "Load SPL Image Student"
+			{
+				type =  form
+				form = Students_Voting_Form
+				record event = on add or edit
+
+				on user input of Select_Your_SPL
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											img = Add_SPL[ID == input.Select_Your_SPL].Logo_SPL;
+										imgID = Add_SPL[ID == input.Select_Your_SPL].ID;
+										if(img != null)
+										{
+											file_path = img.getSuffix("downqual = \"").getSuffix("image/").getPrefix("\"");
+											tmp_img = "https://creator.zoho.in/file/gowsrini2004/voting-nps/SPL_List/" + imgID + "/Logo_SPL/image-download/ahb5TSVdrgwjz5ruFraEN88fb60EA3TR9DC90BNJQFKR207T8ZJQEqdOvQNGKOjb3qWyKuUvy5T1FYKsjWHXQjMFYB1y8tKv8Fnx?filepath=/" + file_path;
+											Image = "<img height=100px width=100px src='" + tmp_img + "'></img>";
+											input.plain_spl = Image;
+										}
+						)
+					}
+				}
+
+			}
+			Load_ASPL_Image_Student as "Load ASPL Image Student"
+			{
+				type =  form
+				form = Students_Voting_Form
+				record event = on add or edit
+
+				on user input of Select_Your_ASPL
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											img = Add_ASPL[ID == input.Select_Your_ASPL].Logo_ASPL;
+										imgID = Add_ASPL[ID == input.Select_Your_ASPL].ID;
+										if(img != null)
+										{
+											file_path = img.getSuffix("downqual = \"").getSuffix("image/").getPrefix("\"");
+											tmp_img = "https://creator.zoho.in/file/gowsrini2004/voting-nps/ASPL_List/" + imgID + "/Logo_ASPL/image-download/1YR3mNk2aA1BzykGSJYsee2fGFzte1kvk5YBnDeFXruMPs1Sv36Pk1bQwKNHjwatZ5qhSm6z9KHCUfk5UxRX3tnqxaUZkgBCukrG?filepath=/" + file_path;
+											Image = "<img height=100px width=100px src='" + tmp_img + "'></img>";
+											input.plain_aspl = Image;
+										}
+						)
+					}
+				}
+
+			}
+			Load_ASPL_Image_Teacher as "Load ASPL Image Teacher"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add or edit
+
+				on user input of Select_Your_ASPL_Teachers
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											img = Add_ASPL[ID == input.Select_Your_ASPL_Teachers].Logo_ASPL;
+										imgID = Add_ASPL[ID == input.Select_Your_ASPL_Teachers].ID;
+										if(img != null)
+										{
+											file_path = img.getSuffix("downqual = \"").getSuffix("image/").getPrefix("\"");
+											tmp_img = "https://creator.zoho.in/file/gowsrini2004/voting-nps/ASPL_List/" + imgID + "/Logo_ASPL/image-download/1YR3mNk2aA1BzykGSJYsee2fGFzte1kvk5YBnDeFXruMPs1Sv36Pk1bQwKNHjwatZ5qhSm6z9KHCUfk5UxRX3tnqxaUZkgBCukrG?filepath=/" + file_path;
+											Image = "<img height=100px width=100px src='" + tmp_img + "'></img>";
+											input.plain_aspl_teacher = Image;
+										}
+						)
+					}
+				}
+
+			}
+			Load_SPL_Image_Teacher as "Load SPL Image Teacher"
+			{
+				type =  form
+				form = Teachers_Voting_Form
+				record event = on add or edit
+
+				on user input of Select_Your_SPL_Teachers
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											img = Add_SPL[ID == input.Select_Your_SPL_Teachers].Logo_SPL;
+										imgID = Add_SPL[ID == input.Select_Your_SPL_Teachers].ID;
+										if(img != null)
+										{
+											file_path = img.getSuffix("downqual = \"").getSuffix("image/").getPrefix("\"");
+											tmp_img = "https://creator.zoho.in/file/gowsrini2004/voting-nps/SPL_List/" + imgID + "/Logo_SPL/image-download/ahb5TSVdrgwjz5ruFraEN88fb60EA3TR9DC90BNJQFKR207T8ZJQEqdOvQNGKOjb3qWyKuUvy5T1FYKsjWHXQjMFYB1y8tKv8Fnx?filepath=/" + file_path;
+											Image = "<img height=100px width=100px src='" + tmp_img + "'></img>";
+											input.plain_spl_teacher = Image;
+										}
+						)
+					}
+				}
+
+			}
+			Alert_Message as "Alert Message"
+			{
+				type =  form
+				form = Students_Voting_Form
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											alert "Enter Your Admission Number And Select The Bellow 'Click Here' Button";
+						)
+					}
+				}
+
+			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Teacher"
+			{
+				name = "Teacher"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Teacher Profile\n"
+				ModulePermissions
+				{
+					Teachers_Details_Form
+					{
+						allFieldsVisible= true 
+					}
+					Students_Voting_Form
+					{
+						allFieldsVisible= true 
+					}
+					Add_ASPL
+					{
+						allFieldsVisible= true 
+					}
+					Add_SPL
+					{
+						allFieldsVisible= true 
+					}
+					Student_Details_Form
+					{
+						allFieldsVisible= true 
+					}
+					Teachers_Voting_Form
+					{
+						allFieldsVisible= true 
+					}
+					Voting_Report
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Voter"
+			{
+				name = "Voter"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Voter Profile\n"
+				ModulePermissions
+				{
+					Teachers_Voting_Form
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Students_Voting_Form
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+				}
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Admin"
+			{
+				name = "Admin"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Admin Profile\n"
+				ModulePermissions
+				{
+					Teachers_Details_Form
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Teachers_List={"View"}
+						}
+					}
+					Students_Voting_Form
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Students_Vote_Report={"View"}
+						}
+					}
+					Add_ASPL
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							ASPL_List={"View"}
+						}
+					}
+					Add_SPL
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							SPL_List={"View"}
+						}
+					}
+					Student_Details_Form
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Students_List={"View"}
+						}
+					}
+					Teachers_Voting_Form
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Teachers_Vote_Report={"View"}
+						}
+					}
+					Voting_Report
+					{
+						enabled = tab
+					}
+				}
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		
+		layout = "tab"
+		color = "black"
+		base theme = "professional"
+		new theme = 1
+		new theme color = 1
+		icons = true
+    	icon type = 1
+    	icon name = "zc-ab-education-5"
+    	icon theme = "darkgrey"
+		icons style = outline
+	}
+
+	
+}
