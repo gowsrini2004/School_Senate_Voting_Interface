@@ -1,0 +1,9 @@
+img = Add_SPL[ID == input.Select_Your_SPL].Logo_SPL;
+imgID = Add_SPL[ID == input.Select_Your_SPL].ID;
+if(img != null)
+{
+	file_path = img.getSuffix("downqual = \"").getSuffix("image/").getPrefix("\"");
+	tmp_img = "https://creator.zoho.in/file/gowsrini2004/voting-nps/SPL_List/" + imgID + "/Logo_SPL/image-download/ahb5TSVdrgwjz5ruFraEN88fb60EA3TR9DC90BNJQFKR207T8ZJQEqdOvQNGKOjb3qWyKuUvy5T1FYKsjWHXQjMFYB1y8tKv8Fnx?filepath=/" + file_path;
+	Image = "<img height=100px width=100px src='" + tmp_img + "'></img>";
+	input.plain_spl = Image;
+}
