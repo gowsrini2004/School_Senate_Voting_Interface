@@ -1,0 +1,11 @@
+if(input.Select_Your_Department != null)
+{
+	clear Select_Your_Name_Teacher;
+	for each  record in Teachers_Details_Form[Department == input.Select_Your_Department]
+	{
+		if(record.Status == "Pending")
+		{
+			input.Select_Your_Name_Teacher:ui.add(record.Teacher_Name);
+		}
+	}
+}
