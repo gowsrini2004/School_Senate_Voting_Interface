@@ -1,0 +1,7 @@
+spl_rec = Add_SPL[ID == input.Select_Your_SPL];
+aspl_rec = Add_ASPL[ID == input.Select_Your_ASPL];
+if(spl_rec != null && aspl_rec != null)
+{
+	aspl_rec.Vote_Count_aspl=aspl_rec.Vote_Count_aspl + 1;
+	spl_rec.Vote_Count_spl=spl_rec.Vote_Count_spl + 1;
+}
