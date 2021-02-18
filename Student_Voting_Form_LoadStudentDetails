@@ -1,0 +1,33 @@
+disable Your_Name;
+disable Your_Sec;
+disable Roll_Number;
+disable Select_Your_Class;
+hide Vote_Your_SPL_Here;
+hide Vote_Your_ASPL_Here;
+rec = Student_Details_Form[Enter_Your_Admission_Number_New == input.Enter_Your_Admission_Number_VotingForm];
+if(rec != null)
+{
+	if(rec.Voting_Status == "Pending")
+	{
+		input.Your_Name = rec.Name;
+		input.Your_Sec = rec.Section;
+		input.Select_Your_Class = rec.Class;
+		input.Roll_Number = rec.Role_no;
+		show Vote_Your_SPL_Here;
+		show Vote_Your_ASPL_Here;
+		show Your_Details;
+		hide To_Vote;
+	}
+	else if(rec.Voting_Status == "Voted")
+	{
+		alert "You Have Already Voted";
+		hide Your_Details;
+		show To_Vote;
+	}
+	else
+	{
+		alert "Invalid Token Entry";
+		hide Your_Details;
+		show To_Vote;
+	}
+}
