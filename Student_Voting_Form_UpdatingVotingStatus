@@ -1,0 +1,2 @@
+recorstudent_record = Student_Details_Form[Enter_Your_Admission_Number_New == input.Enter_Your_Admission_Number_VotingForm];
+recorstudent_record.Voting_Status="Voted";
